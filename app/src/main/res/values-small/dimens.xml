@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="medio">8dp</dimen>
+    <dimen name="largo">30dp</dimen>
+    <dimen name="maximo">150dp</dimen>
+
+    <dimen name="texto">6sp</dimen>
+</resources>
