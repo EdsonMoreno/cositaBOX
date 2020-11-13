@@ -5,5 +5,8 @@
         <item name="android:layout_height">@dimen/largo</item>
         <item name="android:scaleType">fitCenter</item>
     </style>
-
+    <style name="espaciado_boton">
+        <item name="android:layout_width">20sp</item>
+        <item name="android:layout_height">1dp</item>
+    </style>
 </resources>

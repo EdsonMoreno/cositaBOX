@@ -19,12 +19,20 @@
                 android:src="@drawable/linterna">
 
             </ImageButton>
+            <Space
+                style="@style/espaciado_boton">
+
+            </Space>
             <ImageButton
                 android:id="@+id/musica"
                 style="@style/botones"
                 android:src="@drawable/musica">
 
             </ImageButton>
+            <Space
+                style="@style/espaciado_boton">
+
+            </Space>
             <ImageButton
                 android:id="@+id/nivel"
                 style="@style/botones"
