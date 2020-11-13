@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="botones">
+        <item name="android:layout_width">@dimen/largo </item>
+        <item name="android:layout_height">@dimen/largo</item>
+        <item name="android:scaleType">fitCenter</item>
+    </style>
+
+</resources>
