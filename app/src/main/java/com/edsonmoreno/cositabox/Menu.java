@@ -1,5 +1,6 @@
 package com.edsonmoreno.cositabox;
 
+import android.app.Activity;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,6 +8,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -23,6 +25,8 @@ public class Menu extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    private final int BOTONES_MENU[] = {R.id.linterna, R.id.musica, R.id.nivel};
 
     public Menu() {
         // Required empty public constructor
@@ -59,6 +63,21 @@ public class Menu extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_menu, container, false);
+        View vista = inflater.inflate(R.layout.fragment_menu, container, false);
+        ImageButton boton_menu;
+        for(int i=0; i < BOTONES_MENU.length; i++){
+            boton_menu = (ImageButton) vista.findViewById(BOTONES_MENU[i]);
+            int que_boton = i;
+
+            boton_menu.setOnClickListener(new View.OnClickListener(){
+
+                @Override
+                public void onClick(View v) {
+                    Activity esta_cactividad = getActivity();
+                    ((GestorMenu)esta_cactividad).menu(que_boton);
+                }
+            });
+        }
+        return vista;
     }
 }
