@@ -8,8 +8,9 @@
     <!-- TODO: Update blank fragment layout -->
     <ImageView
         android:id="@+id/music"
-        android:layout_width="@dimen/maximo"
-        android:layout_height="@dimen/maximo"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:layout_gravity="center"
         android:src="@drawable/musica">
 
     </ImageView>

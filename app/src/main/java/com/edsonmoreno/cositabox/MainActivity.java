@@ -16,6 +16,7 @@ public class MainActivity extends AppCompatActivity implements GestorMenu {
     @Override
     public void menu(int boton_pulsado) {
         Intent intent = new Intent(this, HerramientasActivity.class);
-        intent.putExtra("boton_pulsado", boton_pulsado);
+        intent.putExtra("oprimido", boton_pulsado);
+        startActivity(intent);
     }
 }
