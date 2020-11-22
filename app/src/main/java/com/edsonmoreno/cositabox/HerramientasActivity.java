@@ -56,7 +56,7 @@ public class HerramientasActivity extends AppCompatActivity implements  GestorMe
         FragmentManager manejador = getFragmentManager();
         FragmentTransaction ft = manejador.beginTransaction();
         ft.replace(R.id.menu, menu_iluminado);
-     //   ft.replace(R.id.menu, fragmentos_cargados[boton_pulsado]);
+        ft.replace(R.id.menu, fragmentos_cargados[boton_pulsado]);
         ft.commit();
     }
 

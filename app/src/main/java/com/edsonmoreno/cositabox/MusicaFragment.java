@@ -1,5 +1,6 @@
 package com.edsonmoreno.cositabox;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import android.app.Fragment;
@@ -7,6 +8,7 @@ import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -53,12 +55,41 @@ public class MusicaFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+        playin = false;
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_musica, container, false);
+        View f = inflater.inflate(R.layout.fragment_musica, container, false);
+        boton_musica = (ImageView) f.findViewById(R.id.musica);
+        boton_musica.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(playin) apagarMusica();
+                else encenderMusica();
+            }
+
+        });
+        return f;
     }
+
+    private  void encenderMusica(){
+        boton_musica.setImageResource(R.drawable.musica2);
+        //iniciamos el servicio
+        Intent inicia_servicioMusica = new Intent(this.getActivity(), MusicService.class );
+        this.getActivity().startService(inicia_servicioMusica);
+        playin = true;
+    }
+
+    private  void  apagarMusica(){
+        boton_musica.setImageResource(R.drawable.musica);
+        Intent apaga_servicioMusica = new Intent(this.getActivity(), MusicService.class);
+        this.getActivity().stopService(apaga_servicioMusica);
+        playin = false;
+    }
+
+    private boolean playin;
+    private ImageView boton_musica;
 }
