@@ -1,17 +1,23 @@
 package com.edsonmoreno.cositabox;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.TargetApi;
 import android.app.Fragment;
 import android.app.FragmentManager;
 
 import android.app.FragmentTransaction;
+import android.content.Context;
+import android.hardware.camera2.CameraManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.widget.Toast;
 
-public class HerramientasActivity extends AppCompatActivity implements  GestorMenu {
+public class HerramientasActivity extends AppCompatActivity implements  GestorMenu, UsarFlashCamara {
 
+    @TargetApi(21)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,6 +26,13 @@ public class HerramientasActivity extends AppCompatActivity implements  GestorMe
         fragmentos_cargados[1] = new MusicaFragment();
         fragmentos_cargados[2] = new NivelFragment();
 
+
+        cameraManager = (CameraManager) getSystemService(Context.CAMERA_SERVICE) ;
+        try {
+            id_lista_camaras = cameraManager.getCameraIdList();
+        } catch (Exception e){
+
+        }
 
 
         setContentView(R.layout.activity_herramientas);
@@ -48,4 +61,17 @@ public class HerramientasActivity extends AppCompatActivity implements  GestorMe
     }
 
     private Fragment fragmentos_cargados[];
+    private CameraManager cameraManager;
+    private String[] id_lista_camaras;
+
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    @Override
+    public void enciendeCamara(boolean estadoFlash) {
+        try{
+            cameraManager.setTorchMode(id_lista_camaras[0],estadoFlash);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+    }
 }
