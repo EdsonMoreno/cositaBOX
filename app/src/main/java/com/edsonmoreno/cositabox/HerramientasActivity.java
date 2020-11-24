@@ -26,12 +26,11 @@ public class HerramientasActivity extends AppCompatActivity implements  GestorMe
         fragmentos_cargados[1] = new MusicaFragment();
         fragmentos_cargados[2] = new NivelFragment();
 
-
-        cameraManager = (CameraManager) getSystemService(Context.CAMERA_SERVICE) ;
         try {
+            cameraManager = (CameraManager) getSystemService(Context.CAMERA_SERVICE) ;
             id_lista_camaras = cameraManager.getCameraIdList();
         } catch (Exception e){
-
+                e.printStackTrace();
         }
 
 
@@ -48,15 +47,17 @@ public class HerramientasActivity extends AppCompatActivity implements  GestorMe
         Fragment menu_iluminado = new Menu();
         Bundle bandle = new Bundle();
         bandle.putInt("pulsado",boton_pulsado);
-        Toast t = Toast.makeText(this,"texto "+boton_pulsado, Toast.LENGTH_LONG);
+       /* Toast t = Toast.makeText(this,"texto "+boton_pulsado, Toast.LENGTH_LONG);
         t.setGravity(Gravity.CENTER, 20,20);
-        t.show();
+        t.show();*/
         menu_iluminado.setArguments(bandle);
 
         FragmentManager manejador = getFragmentManager();
         FragmentTransaction ft = manejador.beginTransaction();
+        //Arriba
         ft.replace(R.id.menu, menu_iluminado);
-        ft.replace(R.id.menu, fragmentos_cargados[boton_pulsado]);
+        //abajo
+        ft.replace(R.id.herramientas, fragmentos_cargados[boton_pulsado]);
         ft.commit();
     }
 

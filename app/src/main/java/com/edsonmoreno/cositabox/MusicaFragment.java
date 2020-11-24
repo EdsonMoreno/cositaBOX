@@ -1,6 +1,7 @@
 package com.edsonmoreno.cositabox;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 
 import android.app.Fragment;
@@ -8,6 +9,7 @@ import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 
 /**
@@ -56,6 +58,7 @@ public class MusicaFragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
         playin = false;
+        getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
     }
 
     @Override
@@ -63,7 +66,7 @@ public class MusicaFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View f = inflater.inflate(R.layout.fragment_musica, container, false);
-        boton_musica = (ImageView) f.findViewById(R.id.musica);
+        boton_musica = (ImageView) f.findViewById(R.id.music);
         boton_musica.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
